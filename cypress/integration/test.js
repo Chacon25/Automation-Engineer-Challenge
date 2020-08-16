@@ -1,6 +1,7 @@
 
 import VerifyTextBox from '../support/VerifyTextbox'
 import VerifyRB from '../support/VerifyRB';
+import VerifyCB from '../support/VerifyCB'
 describe('Testing Parking Cost Calculator' ,()=>{
 
     beforeEach(()=>{
@@ -24,6 +25,28 @@ describe('Testing Parking Cost Calculator' ,()=>{
         VerifyRB.VerifyRB('PM','PM')
         VerifyRB.VerifyRB('AM','PM')
         VerifyRB.VerifyRB('PM','AM')
+
+    })
+
+    it(' Verify Combobox Select', ()=> {
+
+        VerifyCB.VerifyCB('Valet Parking')
+        VerifyCB.VerifyCB('Short-Term Parking')
+        VerifyCB.VerifyCB('Economy Parking')
+        VerifyCB.VerifyCB('Long-Term Garage Parking')
+        VerifyCB.VerifyCB('Long-Term Surface Parking')
+        VerifyCB.VerifyCB('Short-Term Parking')
+        VerifyCB.VerifyCB('Economy Parking')
+        VerifyCB.VerifyCB('Long-Term Garage Parking')
+        VerifyCB.VerifyCB('Long-Term Garage Parking')
+
+
+    })  
+
+    it( 'Verify Button ' ,()=> {
+
+        cy.get('[type="submit"]').click()
+
 
     })
 
