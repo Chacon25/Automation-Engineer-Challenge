@@ -12,7 +12,7 @@ describe('Testing Parking Cost Calculator' ,()=>{
 
     it('Verify Textbox  ' , ()=> {
 
-        VerifyTextBox.Verifytextbox('8/4/2020','8/3/2020','2:00', '3:00')
+        VerifyTextBox.Verifytextbox('8/4/2020','8/5/2020','2:00', '3:00')
         VerifyTextBox.Verifytextbox('3/12/2020','8/12/2020','1:00', '12:00')
         VerifyTextBox.Verifytextbox('1/1/2019','1/1/2019','4:00', '8:00' )
 
@@ -47,6 +47,16 @@ describe('Testing Parking Cost Calculator' ,()=>{
 
         cy.get('[type="submit"]').click()
 
+
+    })
+
+
+    it('Workin in Valet Parking  ' , () => {
+        VerifyCB.VerifyCB('Valet Parking')
+        VerifyTextBox.Verifytextbox('8/4/2020','8/4/2020','2:00', '3:00')
+        VerifyRB.VerifyRB('PM','PM')
+        cy.get('[type="submit"]').click()
+        cy.get(cy.get('.SubHead > b').contains('$ 12.0'))
 
     })
 
