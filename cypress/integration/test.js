@@ -2,6 +2,7 @@
 import VerifyTextBox from '../support/VerifyTextbox'
 import VerifyRB from '../support/VerifyRB';
 import VerifyCB from '../support/VerifyCB'
+import Calculate from '../support/Calculate'
 describe('Testing Parking Cost Calculator' ,()=>{
 
     beforeEach(()=>{
@@ -51,13 +52,25 @@ describe('Testing Parking Cost Calculator' ,()=>{
     })
 
 
-    it('Workin in Valet Parking  ' , () => {
-        VerifyCB.VerifyCB('Valet Parking')
+    it('Working in Valet Parking  ' , () => {
+       /*  VerifyCB.VerifyCB('Valet Parking')
         VerifyTextBox.Verifytextbox('8/4/2020','8/4/2020','2:00', '3:00')
         VerifyRB.VerifyRB('PM','PM')
-        cy.get('[type="submit"]').click()
-        cy.get(cy.get('.SubHead > b').contains('$ 12.0'))
+         */
 
+        // ParkingLot,StartingDate ,LeavingDate , StartingTime ,StartingTimeSet, LeavingTime , LeavingTimeSet
+        Calculate.Calculate('Valet Parking' , '8/4/2020' , '8/5/2020' , '3:00','PM' , '3:00', 'PM'  )
+
+        cy.get('[type="submit"]').click()
+        cy.get(cy.get('.SubHead > b').contains('$ 36.0'))
+    })
+
+    it ('Working in Short-Term Parking ' , ()=> {
+
+        Calculate.Calculate('Short-Term Parking' , '8/4/2020' , '8/5/2020' , '3:00','PM' , '3:00', 'PM'  )
+
+        cy.get('[type="submit"]').click()
+        cy.get(cy.get('.SubHead > b').contains('$ 48.0'))
     })
 
 
